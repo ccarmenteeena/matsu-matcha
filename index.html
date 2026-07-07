@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matsu Matcha | Grado Ceremonial Orgánico</title>
+    
+    <meta name="description" content="Descubre Matsu Matcha. Té matcha 100% orgánico de grado ceremonial cultivado a la sombra en Japón. Energía limpia, frescura garantizada y trazabilidad total.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Matsu Matcha | El Ritual de tu Alto Rendimiento">
+    <meta property="og:description" content="Energía constante sin nerviosismo. Nuestro matcha importado directamente destaca por su dulzor natural y cero amargor.">
+    <meta property="og:image" content="https://tu-dominio.com/image/og-matsu.jpg">
+    <meta property="og:url" content="https://tu-usuario.github.io/matsu-matcha">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        matcha: '#889E19',        /* Tu verde matcha exacto */
+                        miliaNude: '#FCF9F5',     /* Fondo Crema Orgánico de Milia */
+                        miliaDark: '#2D1F1A',     /* Marrón Marfil Profundo de Milia */
+                        miliaRose: '#F7EBE6',     /* Acento Rosa/Fresa de Milia */
+                    },
+                    fontFamily: {
+                        headings: ['Outfit', 'sans-serif'],
+                        body: ['Lora', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body { font-family: 'Lora', serif; background-color: #FCF9F5; color: #2D1F1A; }
+        h1, h2, h3, .font-headings { font-family: 'Outfit', sans-serif; }
+        
+        #cart-sidebar, #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-milia {
+            background-color: #2D1F1A;
+            color: #FCF9F5;
+            transition: all 0.3s ease;
+        }
+        .btn-milia:hover {
+            background-color: #889E19;
+            transform: translateY(-1px);
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Matsu Matcha Ceremonial",
+      "description": "Té matcha premium 100% orgánico, recolectado a mano en Japón de variedad Okumidori.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Matsu Matcha"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "price": "32.90"
+      }
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <div class="bg-miliaDark text-miliaNude text-center py-2 text-xs font-headings tracking-wider uppercase font-semibold">
+        ✨ Envío gratuito a partir de 49€ • Suscríbete y ahorra un 20%
+    </div>
+
+    <header class="sticky top-0 left-0 w-full bg-miliaNude/90 backdrop-blur-md z-50 border-b border-miliaDark/5">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-headings font-extrabold text-2xl text-miliaDark tracking-tighter">
+                MATSU<span class="text-matcha">.</span>
+            </a>
+            
+            <div class="flex items-center space-x-6">
+                <button id="cart-toggle" class="relative text-miliaDark hover:text-matcha transition p-2" aria-label="Ver Carrito">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <span id="cart-count" class="absolute top-1 right-1 bg-matcha text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                </button>
+
+                <button id="menu-toggle" class="text-miliaDark hover:text-matcha transition focus:outline-none" aria-label="Navegación">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-miliaDark z-[60] transform translate-x-full flex flex-col justify-center items-center space-y-8 text-miliaNude">
+        <button id="menu-close" class="absolute top-6 right-6 text-miliaNude text-4xl hover:text-matcha transition">&times;</button>
+        <a href="#propuesta" class="font-headings text-2xl hover:text-matcha transition tracking-wide">Propuesta</a>
+        <a href="#beneficios" class="font-headings text-2xl hover:text-matcha transition tracking-wide">Beneficios de Marca</a>
+        <a href="#impacto" class="font-headings text-2xl hover:text-matcha transition tracking-wide">Matsu en Cifras</a>
+        <a href="#tienda" class="font-headings text-2xl hover:text-matcha transition tracking-wide">Catálogo Premium</a>
+        <a href="#trazabilidad" class="font-headings text-2xl hover:text-matcha transition tracking-wide">Producción Controlada</a>
+    </div>
+
+    <aside id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-[70] transform translate-x-full shadow-2xl flex flex-col border-l border-gray-100">
+        <div class="p-6 bg-miliaNude flex justify-between items-center border-b border-gray-100">
+            <h3 class="font-headings font-bold text-lg text-miliaDark">Tu Cesta Consciente</h3>
+            <button id="cart-close" class="text-2xl text-gray-400 hover:text-miliaDark">&times;</button>
+        </div>
+        <div id="cart-items" class="flex-grow p-6 overflow-y-auto space-y-4">
+            <p id="cart-empty" class="text-center text-gray-400 mt-10 italic text-sm">Tu carrito está esperando tu primera elección zen.</p>
+        </div>
+        <div class="p-6 border-t bg-miliaNude border-gray-100">
+            <div class="flex justify-between items-center font-headings font-bold text-base mb-4">
+                <span class="text-gray-500">Subtotal</span>
+                <span id="cart-total" class="text-miliaDark text-lg">0.00€</span>
+            </div>
+            <button onclick="alert('Pasarela de simulación integrada correctamente para la entrega.');" class="w-full bg-miliaDark text-miliaNude font-headings font-bold py-4 rounded-xl text-sm uppercase tracking-wider hover:bg-matcha transition shadow-md">Proceder al Pago Seguro</button>
+        </div>
+    </aside>
+
+    <main>
+        <section id="propuesta" class="pt-24 pb-20 px-6 bg-gradient-to-b from-miliaRose/30 to-miliaNude">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-matcha font-headings font-bold text-xs uppercase tracking-widest block">Variedad 100% Okumidori Ancestral</span>
+                    <h1 class="font-headings text-4xl sm:text-6xl font-extrabold text-miliaDark leading-tight tracking-tight">
+                        Matsu Matcha: <br><span class="text-matcha italic"> El secreto de tu productividad zen</span>
+                    </h1>
+                    <p class="text-base text-gray-600 max-w-md leading-relaxed">
+                        Nuestra comunidad no busca un estimulante agresivo; busca claridad. Cambia el nerviosismo del café por un ritual equilibrado y sedoso sin pizca de amargor.
+                    </p>
+                    <div class="flex pt-2 space-x-4">
+                        <a href="#tienda" class="btn-milia font-headings font-bold px-8 py-4 rounded-xl text-sm shadow-sm">Explorar Tienda</a>
+                        <a href="#trazabilidad" class="border border-miliaDark text-miliaDark font-headings font-bold px-8 py-4 rounded-xl text-sm hover:bg-miliaDark hover:text-miliaNude transition">Ver Origen</a>
+                    </div>
+                </div>
+                <div class="flex justify-center relative">
+                    <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-matcha/5 rounded-full blur-2xl"></div>
+                    <div class="w-full max-w-sm h-80 bg-miliaRose rounded-3xl flex items-center justify-center shadow-xl text-matcha select-none overflow-hidden">
+                        <img src="images/hero-matcha.jpg" alt="Lata premium de Matsu Matcha grado ceremonial de Uji" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios" class="py-20 px-6 bg-white">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="font-headings text-3xl font-bold text-miliaDark mb-12 text-center">Un superalimento con múltiples beneficios adaptógenos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 bg-miliaNude rounded-2xl border border-gray-100">
+                        <div class="text-matcha text-4xl mb-4">✨</div>
+                        <h3 class="font-headings text-lg font-bold text-miliaDark mb-2">Piel Radiante</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Su concentración de antioxidantes combate de forma interna los radicales libres, protegiendo la elasticidad e iluminando tu rostro de forma natural.</p>
+                    </div>
+                    <div class="p-6 bg-miliaNude rounded-2xl border border-gray-100">
+                        <div class="text-matcha text-4xl mb-4">💪🏼</div>
+                        <h3 class="font-headings text-lg font-bold text-miliaDark mb-2">Energía Productiva</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">La teína se libera gradualmente a lo largo de 6 horas gracias a los aminoácidos protectores, eliminando los bajones de productividad.</p>
+                    </div>
+                    <div class="p-6 bg-miliaNude rounded-2xl border border-gray-100">
+                        <div class="text-matcha text-4xl mb-4">🍵</div>
+                        <h3 class="font-headings text-lg font-bold text-miliaDark mb-2">Cero Acidez</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">A diferencia del pH altamente ácido de los granos de café procesados, Matsu es sumamente alcalino y cuida de tu flora digestiva.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacto" class="py-20 px-6 bg-miliaRose/40 border-t border-b border-miliaDark/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs uppercase font-headings font-bold tracking-widest text-matcha">Validación de Marca</span>
+                    <h2 class="font-headings text-3xl font-bold text-miliaDark mt-2">Matsu en cifras globales</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div class="space-y-2">
+                        <p class="font-headings font-extrabold text-4xl text-miliaDark tracking-tight">+129.540</p>
+                        <p class="text-xs font-bold text-matcha uppercase tracking-wider">Clientes Satisfechos</p>
+                        <p class="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed">Nuestra pureza y sabor dulce natural ya han conquistado paladares exigentes a nivel global.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="font-headings font-extrabold text-4xl text-miliaDark tracking-tight">185</p>
+                        <p class="text-xs font-bold text-matcha uppercase tracking-wider">Países con Envío</p>
+                        <p class="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed">Operamos con hubs logísticos locales para mantener la frescura molecular intacta en el trayecto.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="font-headings font-extrabold text-4xl text-miliaDark tracking-tight">20 Ha</p>
+                        <p class="text-xs font-bold text-matcha uppercase tracking-wider">Campos Propios</p>
+                        <p class="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed">Cultivado de forma sostenible en Mie, Japón, por la misma familia artesanal desde hace más de 60 años.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="font-headings font-extrabold text-4xl text-miliaDark tracking-tight">90.000€</p>
+                        <p class="text-xs font-bold text-matcha uppercase tracking-wider">Donados con Éxito</p>
+                        <p class="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed">Destinamos 0.50€ de cada lata vendida a fundaciones infantiles para cumplir sueños.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-headings text-3xl font-bold text-miliaDark">Índice ORAC Comparativo</h2>
+                    <p class="text-gray-500 text-sm mt-2">Capacidad técnica de absorción de radicales libres medida científicamente por gramo.</p>
+                </div>
+                <div class="bg-miliaNude p-6 rounded-2xl border border-gray-100 h-80">
+                    <canvas id="matchaChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="tienda" class="py-20 px-6 bg-miliaNude">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-12">
+                    <span class="text-matcha font-headings font-bold uppercase tracking-widest text-xs">Colección de Cosecha</span>
+                    <h2 class="font-headings text-3xl font-bold text-miliaDark mt-1">Elige tu formato diario</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-full aspect-square bg-miliaRose/40 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/matcha-vainilla.jpg" alt="Lata de Matsu Matcha Ceremonia Sabor Vainilla" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-headings font-bold text-lg text-miliaDark">Matsu Ceremonial Vainilla (30g)</h3>
+                            <p class="text-gray-400 text-xs mb-4">Notas sutiles y suaves adaptadas. 100% libre de azúcares añadidos.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="font-headings font-bold text-xl text-miliaDark">34.90€</span>
+                            <button onclick="addToCart('Ceremonial Vainilla 30g', 34.90)" class="btn-milia p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border-2 border-matcha flex flex-col justify-between shadow-md relative">
+                        <span class="absolute top-3 right-3 bg-matcha text-white text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full">El Favorito</span>
+                        <div>
+                            <div class="w-full aspect-square bg-matcha/10 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/matcha-puro.jpg" alt="Lata tradicional de Matsu Matcha Ceremonia Puro" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-headings font-bold text-lg text-miliaDark">Matsu Ceremonial Puro (30g)</h3>
+                            <p class="text-gray-400 text-xs mb-4">Nuestra selección tradicional de hoja de primavera. Sabor intensamente umami y dulce.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="font-headings font-bold text-xl text-miliaDark">32.90€</span>
+                            <button onclick="addToCart('Ceremonial Puro 30g', 32.90)" class="btn-milia p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-full aspect-square bg-miliaRose/40 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/vaso-vidrio.jpg" alt="Vaso artesanal de borosilicato Matsu Matcha" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-headings font-bold text-lg text-miliaDark">Vaso de Vidrio Matsu (490ml)</h3>
+                            <p class="text-gray-400 text-xs mb-4">Fabricación artesanal europea de borosilicato ideal para lattes helados.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="font-headings font-bold text-xl text-miliaDark">16.90€</span>
+                            <button onclick="addToCart('Vaso Vidrio Matsu', 16.90)" class="btn-milia p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-full aspect-square bg-miliaRose/40 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/matcha-fresa.jpg" alt="Lata de Matsu Matcha Ceremonial con aroma natural a fresa" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-headings font-bold text-lg text-miliaDark">Matsu Ceremonial Fresa (100g)</h3>
+                            <p class="text-gray-400 text-xs mb-4">Formato macro afrutado gourmet. Perfecto para mezclar con leche de avena fría.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="font-headings font-bold text-xl text-miliaDark">96.90€</span>
+                            <button onclick="addToCart('Ceremonial Fresa 100g', 96.90)" class="btn-milia p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-full aspect-square bg-matcha/10 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/batidor-bambu.jpg" alt="Batidor tradicional de bambú Chasen de 100 varillas" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-headings font-bold text-lg text-miliaDark">Batidor de Bambú Tradicional</h3>
+                            <p class="text-gray-400 text-xs mb-4">Chasen artesanal de 100 varillas para emulsionar y lograr la espuma densa perfecta.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="font-headings font-bold text-xl text-miliaDark">14.90€</span>
+                            <button onclick="addToCart('Batidor de Bambú', 14.90)" class="btn-milia p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-full aspect-square bg-miliaRose/40 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/set-premium.jpg" alt="Caja Set Esencial Premium de Matsu Matcha para ceremonias." class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-headings font-bold text-lg text-miliaDark">Set Esencial Premium</h3>
+                            <p class="text-gray-400 text-xs mb-4">Caja completa de iniciación: Lata ceremonial de 30g, batidor y cuchara medidora.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="font-headings font-bold text-xl text-miliaDark">49.90€</span>
+                            <button onclick="addToCart('Set Esencial Premium', 49.90)" class="btn-milia p-3 rounded-full">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trazabilidad" class="py-20 px-6 bg-white border-t border-gray-100">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs uppercase font-headings font-bold tracking-widest text-matcha">Saber Hacer Ancestral</span>
+                    <h2 class="font-headings text-3xl font-bold text-miliaDark mt-1">Una producción 100% controlada</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="space-y-3">
+                        <div class="font-headings font-bold text-miliaDark text-lg flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-matcha"></span> Trazabilidad Total
+                        </div>
+                        <p class="text-sm text-gray-500 leading-relaxed">
+                            La cosecha se realiza exclusivamente una vez al año, a finales de mayo. Al trabajar directamente de origen con la prefectura de Mie, garantizamos que cada hoja sea cultivada y transformada in situ sin intermediarios corporativos.
+                        </p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-headings font-bold text-miliaDark text-lg flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-matcha"></span> Control Impecable
+                        </div>
+                        <p class="text-sm text-gray-500 leading-relaxed">
+                            Cada lote se calibra rigurosamente midiendo la finura del grano y la homogeneidad de la molienda en piedra. Nuestra planta aliada cuenta con la certificación internacional FSSC 22000 de máxima seguridad alimentaria.
+                        </p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-headings font-bold text-miliaDark text-lg flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-matcha"></span> Envasado a Medida
+                        </div>
+                        <p class="text-sm text-gray-500 leading-relaxed">
+                            Diseñadas con un lacado limpio y minimalista, nuestras latas metálicas se sellan herméticamente apenas unas horas después de concluir la molienda fina para encapsular por completo la frescura y evitar la oxidación lumínica.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-miliaDark text-miliaNude py-16 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
+            <div>
+                <a href="#" class="font-headings font-extrabold text-xl tracking-tight text-white">MATSU<span class="text-matcha">.</span></a>
+                <p class="mt-4 text-gray-400 text-xs leading-relaxed">Sustituyendo estimulantes químicos por claridad mental activa y rituales de enfoque de origen protegido.</p>
+            </div>
+            <div>
+                <h4 class="font-headings font-bold text-white mb-4 uppercase text-xs tracking-wider">Explorar</h4>
+                <ul class="space-y-3 text-gray-400 text-xs">
+                    <li><a href="#propuesta" class="hover:text-matcha transition">Propuesta</a></li>
+                    <li><a href="#impacto" class="hover:text-matcha transition">Matsu en Cifras</a></li>
+                    <li><a href="#tienda" class="hover:text-matcha transition">Catálogo</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-headings font-bold text-white mb-4 uppercase text-xs tracking-wider">Legalidades</h4>
+                <ul class="space-y-3 text-gray-400 text-xs">
+                    <li><a href="#" onclick="event.preventDefault();" class="hover:text-matcha transition">Aviso Legal</a></li>
+                    <li><a href="#" onclick="event.preventDefault();" class="hover:text-matcha transition">Política de Privacidad</a></li>
+                    <li><a href="#" onclick="event.preventDefault();" class="hover:text-matcha transition">Garantía de Devolución</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-headings font-bold text-white mb-4 uppercase text-xs tracking-wider">Comunidad</h4>
+                <div class="flex space-x-4 text-xs text-gray-400">
+                    <a href="#" class="hover:text-white transition">Instagram</a>
+                    <a href="#" class="hover:text-white transition">TikTok</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/5 text-center text-[10px] text-gray-500 font-headings uppercase tracking-widest">
+            © <span id="year"></span> Matsu Matcha. Todos los derechos reservados. Caso de Estudio Académico.
+        </div>
+    </footer>
+
+    <script>
+        // 1. Año Dinámico en Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. Control del Menú Hamburguesa Unificado
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => mobileMenu.classList.remove('translate-x-full'));
+        menuClose.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
+        });
+
+        // 3. Carrito de Compras en Memoria Coherente
+        const cartToggle = document.getElementById('cart-toggle');
+        const cartClose = document.getElementById('cart-close');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        let cart = [];
+
+        cartToggle.addEventListener('click', () => cartSidebar.classList.remove('translate-x-full'));
+        cartClose.addEventListener('click', () => cartSidebar.classList.add('translate-x-full'));
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            cartSidebar.classList.remove('translate-x-full'); // Feedback de UX inmediato
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const count = document.getElementById('cart-count');
+            const total = document.getElementById('cart-total');
+            const emptyMsg = document.getElementById('cart-empty');
+
+            count.textContent = cart.length;
+            container.innerHTML = '';
+            
+            if (cart.length === 0) {
+                container.appendChild(emptyMsg);
+                total.textContent = "0.00€";
+            } else {
+                let currentTotal = 0;
+                cart.forEach((item, index) => {
+                    currentTotal += item.price;
+                    const div = document.createElement('div');
+                    div.className = "flex justify-between items-center bg-miliaNude p-3 rounded-xl border border-gray-100 text-xs";
+                    div.innerHTML = `
+                        <div>
+                            <p class="font-bold text-miliaDark">${item.name}</p>
+                            <p class="text-matcha font-semibold">${item.price.toFixed(2)}€</p>
+                        </div>
+                        <button onclick="removeItem(${index})" class="text-gray-300 hover:text-red-500 font-bold text-lg">&times;</button>
+                    `;
+                    container.appendChild(div);
+                });
+                total.textContent = currentTotal.toFixed(2) + "€";
+            }
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // 4. Inicialización de Gráfica Obligatoria (Chart.js)
+        const ctx = document.getElementById('matchaChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Matsu Matcha', 'Bayas de Goji', 'Chocolate Negro', 'Nueces', 'Espinacas'],
+                datasets: [{
+                    data: [1384, 253, 227, 135, 12],
+                    backgroundColor: ['#889E19', '#2D1F1A', '#2D1F1A', '#2D1F1A', '#2D1F1A'],
+                    borderRadius: 6,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { font: { family: 'Outfit', size: 10 } } },
+                    x: { ticks: { font: { family: 'Outfit', weight: '600', size: 11 }, color: '#2D1F1A' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
